@@ -1,0 +1,82 @@
+body {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: 'Cabin Sketch', cursive;
+  background-color: black;
+  color: white;
+}
+
+.title {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.by {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.date {
+  font-size: 1.0rem;
+  margin-bottom: 40px;
+}
+
+.tap-me {
+  font-size: 2rem;
+}
+
+.title-page {
+  cursor: pointer !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s ease-in forwards;
+}
+
+.game-page {
+  opacity: 0;
+}
+
+.game-page .title {
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+}
+
+.board {
+  outline: 5px solid grey;
+  outline-offset: 5px;
+  display: grid;
+  grid-template-columns: repeat(7, 40px);
+  justify-content: center;
+  gap: 3px;
+  margin-bottom: 30px;
+}
+
+.cell {
+  width: 40px;
+  height: 40px;
+  background-color: grey;
+}
+
+.footer button {
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  font-size: 1.5rem;
+  margin: 0 5px 0 5px;
+}
