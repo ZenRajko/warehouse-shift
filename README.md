@@ -11,11 +11,7 @@ Also, there are two types of crates:
 * Wood - these cannot be stacked more than three high, and cannot support the weight of a metal crate.
 * Metal - these can be stacked to any height, and can support wooden crates.
 
-### Features
-
-* This game is built in React with Typescript.
-* All graphics are comprised of Google fonts and glyphs.
-* Designed for typical mobile phone form factor. 
+This game is built in React with Typescript. All graphics are comprised of Google fonts and glyphs. It's designed for typical mobile phone form factor. 
 
 ### Screenshots
 
@@ -39,7 +35,9 @@ Once all gold crates are clicked, you win!
 * Difficulty levels to be added. In higher levels, perhaps crates are added to the warehouse as you work, or perhaps there's a time limit.
 * Special crates, e.g. fragile ones, where nothing can be stacked on top of them. Or maybe exploding crates!
 * Add animations of crates moving from stack to stack.
+* Improve the look of the game. It's improved through development (see legacy screenshots below), but I'm still not entirely happy with it.
 * Sound effects
+* Tidy up the code
 
 ### Legacy screenshots
 
