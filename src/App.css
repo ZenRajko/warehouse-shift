@@ -1,4 +1,5 @@
 body {
+  background: linear-gradient(to bottom, #7B3F12, #390D00);
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -55,6 +56,7 @@ body {
 .game-page .title {
   font-size: 2.5rem;
   margin-bottom: 10px;
+  text-shadow: 2px 2px 5px gray;
 }
 
 .game-page .count {
@@ -63,8 +65,8 @@ body {
 }
 
 .board {
-  outline: 5px solid grey;
-  outline-offset: 5px;
+  background-color: black;
+  padding: 4px;
   display: grid;
   grid-template-columns: repeat(7, 40px);
   justify-content: center;
@@ -75,8 +77,8 @@ body {
 .cell {
   width: 40px;
   height: 40px;
-  background-color: black;
-  color: white;
+  background-color: transparent;
+  color: transparent;
   border: 0;
   padding: 0;
   margin: 0;
@@ -89,26 +91,95 @@ body {
 }
 
 .wood {
-  color: burlywood;
+  background: linear-gradient(to bottom, #9B5F32, #4B1F00);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 .metal {
-  color: steelblue;
+  background: linear-gradient(to bottom, #D0D0D0, #38393D);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
-.selected {
-  color: red;
+@keyframes growShrink {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
 }
 
-.footer button {
-  background-color: black;
-  color: white;
-  border: 1px solid white;
-  font-size: 1.5rem;
-  margin: 0 8px 0 8px;
+.requested {
+  background: linear-gradient(to bottom right, darkorange, yellow, darkorange);
+  -webkit-background-clip: text;
+  background-clip: text;
+  box-shadow: 0 0 20px darkorange;
+  outline-offset: 1px;
+}
+
+.top {
+  outline: 2px dashed cyan;
+  box-shadow: 0 0 10px cyan;
+  border-radius: 2px;
   cursor: pointer;
 }
 
-.footer button:hover, .wood:hover, .metal:hover {
+.selected {
+  animation: growShrink 1.25s infinite alternate ease-in-out;
+  outline: 2px dashed cyan;
+  box-shadow: 0 0 20px cyan;
+  outline-offset: 1px;
+  border-radius: 3px;
+}
+
+.target {
+  outline: 2px dashed red;
+  box-shadow: 0 0 20px red;
+  outline-offset: 1px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.footer button {
+  background-color: transparent;
+  color: white;
+  border: 0;
+  font-size: 1.5rem;
+  padding-top: 1px;
+  margin: 0 8px 0 8px;
+  cursor: pointer;
+  text-shadow: 5px 5px 100px black;
+}
+
+.footer button:hover,
+.wood:hover,
+.metal:hover {
   background-color: #444444;
+}
+
+@keyframes expandFade {
+  0% {
+    font-size: 1em;
+    opacity: 1;
+  }
+
+  50% {
+    font-size: 2em;
+    opacity: 1;
+  }
+
+  100% {
+    font-size: 2em;
+    opacity: 0;
+  }
+}
+
+.caption {
+  pointer-events: none;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: auto;
+  font-size: 3.0rem;
+  animation: expandFade 2s ease-in-out forwards;
+  display: none;
 }
