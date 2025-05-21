@@ -56,3 +56,8 @@ From various stages in development...
 ### AI Contributions
 
 This game contains no AI-generated code or art. This is an old-school effort.
+
+
+### Terms & Conditions
+
+This app is provided as-is. Use at own risk. Free to use as you want, although some credit would be nice.
