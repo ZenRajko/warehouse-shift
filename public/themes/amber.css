@@ -1,0 +1,49 @@
+/* Amber screen interlaced background */
+.content {
+    font-family: 'VT323', monospace;
+    font-weight: bold;
+    letter-spacing: 0.15em;
+    color: #ffbf00;
+    background: repeating-linear-gradient(
+        to bottom,
+        #000 0px,
+        #000 2px,
+        #664400 3px,
+        #664400 5px
+    );
+    text-shadow: 0 0 15px #ffbf00;
+}
+
+.content::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 60%, rgba(0,0,0,1) 100%);
+    z-index: 2;
+}
+
+/* Optional: style for theme buttons */
+.themes button {
+    font-family: 'VT323', monospace;
+    font-size: 1.5rem;
+    letter-spacing: 0.09em;
+    background-color: transparent;
+    color: #b38600;
+}
+
+button.theme-selected {
+    background-color: black;
+    color: #ffbf00;
+    text-shadow: 0 0 2px #ffbf00, 0 0 5px #ffbf00;
+}
+
+.themes button:hover {
+    color: #ffbf00;
+    text-shadow: 0 0 2px #ffbf00, 0 0 5px #ffbf00;
+}
+
+.title {
+    font-size: 4.5rem;
+}

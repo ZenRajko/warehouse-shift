@@ -1,0 +1,16 @@
+.content {
+    font-family: 'Coiny', cursive;
+}
+
+.themes button {
+    font-family: 'Coiny', cursive;
+}
+
+.themes button:hover {
+}
+
+button.theme-selected {
+}
+
+.title {
+}

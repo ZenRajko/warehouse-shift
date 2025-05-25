@@ -1,28 +1,12 @@
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faInfoCircle, faRotate } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import { Page, Icon, Crate } from "./enums";
+import { getRandom } from "./utils";
+import Themes from "./themes";
+import { useConfig } from "./config";
 import "./App.css";
-
-enum Page {
-  Title = "TITLE",
-  Intro = "INTRO",
-  Info = "INFO",
-  Game = "GAME",
-  Win = "WIN",
-  Lose = "LOSE"
-}
-
-enum Crate {
-  Wood = '#',
-  Metal = '@'
-}
-
-enum Icon {
-  Wood = "border_all",
-  Metal = "margin",
-  Target = "indeterminate_question_box"
-}
 
 type BoardType = (string | null)[];
 
@@ -33,18 +17,35 @@ const end = size - 1;
 const bottomRow = end - width;
 const initialBoard: BoardType = Array(size).fill(null);
 
-function getRandom(min: number, max: number): number {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
 const App: React.FC = () => {
   const [page, setPage] = useState<Page>(Page.Title);
   const [board, setBoard] = useState<BoardType>(initialBoard);
   const [left, setLeft] = useState<number>(0);
   const [selected, setSelected] = useState<number | null>();
   const [requested, setRequested] = useState<number | null>();
+  const [delivered, setDelivered] = useState<number | null>();
+  const config = useConfig();
+  const [theme, setTheme] = useState<string | undefined>();
 
-  const nextRequestedCrate = (): void => {
+  useEffect(() => {
+    if (config?.themes && config.theme && !theme) {
+      setTheme(config.theme);
+    }
+  }, [config, theme]);
+
+  useEffect(() => {
+    const existingLink = document.getElementById("theme-style") as HTMLLinkElement;
+    if (existingLink) document.head.removeChild(existingLink);
+    if (theme && theme !== "Default") {
+      const link = document.createElement("link");
+      link.id = "theme-style";
+      link.rel = "stylesheet";
+      link.href = `/themes/${theme.toLowerCase()}.css`;
+      document.head.appendChild(link);
+    }
+  }, [theme]);
+
+  const nextRequestedCrate = useCallback(() => {
     let i = getRandom(0, left - 1);
     setRequested(null);
     for (let j = end; j > 0; j--) {
@@ -57,14 +58,30 @@ const App: React.FC = () => {
         i--;
       }
     }
-  }
+  }, [board, left]);
 
   useEffect(() => {
-    if (left > 0) nextRequestedCrate();
-  }, [left]);
+    if (page === Page.Game) {
+      if (left > 0) {
+        nextRequestedCrate();
+        setDelivered(null);
+      } else
+        setPage(Page.Win);
+    } else
+      nextRequestedCrate();
+  }, [left, page, nextRequestedCrate]);
+
+  useEffect(() => {
+    if (page === Page.Game && delivered) {
+      setTimeout(() => {
+        board[delivered] = null;
+        setLeft(left => left - 1);
+      }, 50);
+    }
+  }, [delivered, page, board]);
 
   const handleClick = (index: number): void => {
-    const topCell = index > width && board[index] && board[index - width] === null
+    const topCell = board[index] && ((index >= width && board[index - width] === null) || index < width);
 
     if (selected && index === selected) {
       setSelected(null);
@@ -73,14 +90,7 @@ const App: React.FC = () => {
 
     if (topCell && index === requested) {
       setSelected(null);
-      board[index] = null;
-      if (left === 1)
-        setPage(Page.Win);
-      else {
-        setLeft(left => left - 1);
-        const e = document.getElementsByClassName("caption")[0] as HTMLElement
-        e.style.opacity = "1";
-      }
+      setDelivered(index);
       return;
     }
 
@@ -114,10 +124,12 @@ const App: React.FC = () => {
   };
 
   const restartGame = (): void => {
+    setSelected(null);
+    setDelivered(null);
     initialBoard.fill(null);
     let i = end;
     let crates = 0;
-    for (let y = 0; y < 7; y++) {
+    for (let y = 0; y < 1; y++) {
       for (let x = 0; x < width; x++) {
         let tile = null;
         if (y === 0)
@@ -157,66 +169,73 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className="main">
-
-      {page === Page.Title && (<div className="title-page fade-in"
-        onClick={() => {
+    <div className={`content ${page !== Page.Game ? "pointer" : ""}`}
+      onClick={() => {
+        if (page === Page.Title) {
           restartGame();
           setPage(Page.Intro);
-        }}>
+        } else if (page === Page.Intro) {
+          setPage(Page.Game);
+        } else if (page === Page.Win || page === Page.Lose) {
+          restartGame();
+          setPage(Page.Game);
+        }
+      }}
+    >
+
+      {page === Page.Title && (<div className="title-page fade-in">
         <div className="title">Warehouse<br></br>SHIFT</div>
-        <div className="by">by<br></br>Damian Rajkowski</div>
+        <div className="by">by</div>
+        <div className="name">Damian Rajkowski</div>
         <div className="date">19 May 2025</div>
         <div className="tap-me">Tap anywhere<br></br>to start</div>
+        <div className="theme-title">Or, choose a theme first:</div>
+        <Themes onThemeChange={setTheme} />
       </div>)}
 
       {(page === Page.Intro || page === Page.Info) &&
-        (<div className="title-page fade-in"
-          onClick={() => {
-            setPage(Page.Game);
-          }}>
+        (<div className="title-page fade-in">
           <div className="title">Warehouse<br></br>SHIFT</div>
-          <div className="by">Instructions</div>
-          <div className="date">You run a warehouse, stacked with crates.<br></br>
-            Customers come in, demanding their crates.<br></br>
-            These are highlighted in red.<br></br>
-            You have to reach the highlighted crate by moving the crates<br></br>
-            on top of it to other stacks.<br></br>
-            <br></br>
-            Metal crates can only be stacked on metal crates,<br></br>
-            cause they're heavy.<br></br>
-            Wooden crates can be stacked anywhere.
-            <br></br>
-            Your job is to get rid of all the crates.
+          <div className="instructions-title">Instructions</div>
+          <div className="instructions">
+            <p>
+              You work in a warehouse.<br></br>
+              Customers want their golden crates!<br></br>
+              Move top crates from stack to stack<br></br>
+              to reach the crate and click it!
+            </p>
+            <div className="instructions-metal">
+              <span className="material-icons">{Icon.Metal}</span>
+              <p>Metal crates can't be stacked on wooden crates.</p>
+            </div>
+            <div className="instructions-wood">
+              <span className="material-icons">{Icon.Wood}</span>
+              <p>Wooden crates can only stack three high.</p>
+            </div>
           </div>
           <div className="tap-me">Tap anywhere<br></br>to {page === Page.Intro ? "Start" : "Return"}</div>
+          <div className="theme-title">Or, change the theme:</div>
+          <Themes onThemeChange={setTheme} />
         </div>)}
 
-      {page === Page.Win && (<div className="win-page fade-in"
-        onClick={() => {
-          restartGame();
-          setPage(Page.Game);
-        }}>
-        <div className="title">Well done!</div>
-        <div className="by">You've delivered all the crates and<br></br>
-          another work day is over.<br></br>
-          <br></br>
-          Go home, rest up.<br></br>
-          Tomorrow is another day.
+      {page === Page.Win && (<div className="win-page fade-in">
+        <div className="title title-win">Well done!</div>
+        <div className="instructions-win"><br></br>
+          You delivered all the crates.<br></br><br></br>
+          Go home, grab a beer<br></br>and call it a day,<br></br>
         </div>
-        <div className="date"></div>
-        <div className="tap-me">Tap anywhere to<br></br>do another shift</div>
+        <div className="or-win">or..</div>
+        <div className="tap-me">Tap anywhere for<br></br>another shift</div>
       </div>)}
 
-      {page === Page.Lose && (<div className="win-page fade-in"
-        onClick={() => {
-          restartGame();
-          setPage(Page.Game);
-        }}>
-        <div className="title">You're Failed</div>
-        <div className="by">You've damaged one or more crates.</div>
-        <div className="date"></div>
-        <div className="tap-me">Tap anywhere to<br></br>do another shift</div>
+      {page === Page.Lose && (<div className="win-page fade-in">
+        <div className="title title-lose">You Failed!</div>
+        <div className="instructions-lose"><br></br>
+          You damaged the stock.<br></br><br></br>
+          Get out of here and<br></br>look for a new job<br></br>
+        </div>
+        <div className="or-lose">or..</div>
+        <div className="tap-me">Tap anywhere to<br></br>try another shift</div>
       </div>)}
 
       {page === Page.Game && (<div className="game-page fade-in">
@@ -227,30 +246,29 @@ const App: React.FC = () => {
             <button key={index} onClick={() => handleClick(index)}
               className={`cell cell-${index}-
                 ${selected && board[index] === null && index !== selected - width &&
-                    (index >= bottomRow ||
-                      (index < bottomRow && board[index + width] !== null)
-                    ) ? "target" : ""
+                  (index >= bottomRow ||
+                    (index < bottomRow && board[index + width] !== null)
+                  ) ? "target" : ""
                 }
-                ${!selected && index > width && board[index] && board[index - width] === null ? "top" : ""}
+                ${!selected && board[index] && ((index >= width && board[index - width] === null) || index < width) ? "top" : ""}
                 ${cell === Crate.Wood ? "wood" : (cell === Crate.Metal ? "metal" : "")}
-                ${index === selected ? "selected" : ""}
+                ${index === selected && !delivered ? "selected" : ""}
                 ${index === requested ? "requested" : ""}
+                ${index === delivered ? "spin-out" : ""}
               `}
             ><span className="material-icons">
-              {cell === Crate.Wood ? Icon.Wood :
-                (cell === Crate.Metal ? Icon.Metal :
-                  (selected && board[index] === null && index !== selected - width &&
-                    (index >= bottomRow ||
-                      (index < bottomRow && board[index + width] !== null)
-                    )
-                  ) ? Icon.Metal : ""
-                )
-              }</span>
+                {cell === Crate.Wood ? Icon.Wood :
+                  (cell === Crate.Metal ? Icon.Metal :
+                    (selected && board[index] === null && index !== selected - width &&
+                      (index >= bottomRow ||
+                        (index < bottomRow && board[index + width] !== null)
+                      )
+                    ) ? Icon.Metal : ""
+                  )
+                }</span>
             </button>
           ))}
         </div>
-
-        <div className="caption">Delivered</div>
 
         <div className="footer">
           <button title="Restart" onClick={() => restartGame()}>

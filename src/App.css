@@ -1,77 +1,141 @@
-body {
-  background: linear-gradient(to bottom, #7B3F12, #390D00);
+.content {
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  font-family: 'Cabin Sketch', cursive;
+  font-weight: bold;
   background-color: black;
+  color: white;
+  overflow: hidden;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+button {
+  color: white;
+  cursor: pointer;
+}
+
+.themes {
+  width: 75%;
+  margin: 0 auto 0 auto;
+}
+
+.themes button {
+  margin: 0 2px 0 2px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  background-color: black;
+  color: grey;
+  border: 0;
+}
+
+.themes button:hover {
   color: white;
 }
 
-.title {
-  font-size: 3rem;
-  margin-bottom: 15px;
+button.theme-selected {
+  color: white;
 }
 
-.by {
+.instructions div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 5px 40px 0 40px;
+}
+
+.instructions span {
+  margin-right: 10px;
+  font-size: 2.2rem;
+}
+
+.instructions p {
+  margin: 10px 0 0 0;
+  display: inline;
+}
+
+.title-page {
+  width: 400px;
+}
+
+.title {
+  font-size: 3.5rem;
+  line-height: 3.5rem;
+  margin-bottom: 20px;
+}
+
+.by, .date, .or-win, .or-lose {
+  font-size: 1.25rem;
+  margin-bottom: 5px;
+}
+
+.date {
+  margin-bottom: 30px;
+}
+
+.instructions {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.instructions-win, .instructions-lose {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+}
+
+.or-win, .or-lose {
+  margin-bottom: 30px;
+}
+
+.instructions-metal, .instructions-wood {
+  font-size: 1.2rem;
+}
+
+.name, .instructions-title {
   font-size: 1.5rem;
   margin-bottom: 20px;
 }
 
-.date {
-  font-size: 1.0rem;
-  margin-bottom: 40px;
-}
-
 .tap-me {
   font-size: 2rem;
+  margin-bottom: 30px;
 }
 
-.title-page {
-  cursor: pointer !important;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-.fade-in {
-  opacity: 0;
-  animation: fadeIn 1s ease-in forwards;
+.theme-title {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
 }
 
 .game-page {
-  opacity: 0;
+  opacity: 1;
 }
 
 .game-page .title {
   font-size: 2.5rem;
   margin-bottom: 10px;
-  text-shadow: 2px 2px 5px gray;
 }
 
 .game-page .count {
   font-size: 1.4rem;
+  font-weight: bold;
   margin-bottom: 35px;
 }
 
 .board {
   background-color: black;
-  padding: 4px;
   display: grid;
   grid-template-columns: repeat(7, 40px);
   justify-content: center;
+  width: 298px;
+  padding: 3px;
   gap: 3px;
   margin-bottom: 40px;
+  outline: 4px solid grey;
 }
 
 .cell {
@@ -90,96 +154,33 @@ body {
   margin: -5px 0 0 -5px;
 }
 
-.wood {
-  background: linear-gradient(to bottom, #9B5F32, #4B1F00);
-  -webkit-background-clip: text;
-  background-clip: text;
-}
-
-.metal {
-  background: linear-gradient(to bottom, #D0D0D0, #38393D);
-  -webkit-background-clip: text;
-  background-clip: text;
-}
-
-@keyframes growShrink {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
-}
-
-.requested {
-  background: linear-gradient(to bottom right, darkorange, yellow, darkorange);
-  -webkit-background-clip: text;
-  background-clip: text;
-  box-shadow: 0 0 20px darkorange;
-  outline-offset: 1px;
-}
-
-.top {
-  outline: 2px dashed cyan;
-  box-shadow: 0 0 10px cyan;
-  border-radius: 2px;
+.wood, .metal {
+  color: grey;
   cursor: pointer;
 }
 
-.selected {
-  animation: growShrink 1.25s infinite alternate ease-in-out;
-  outline: 2px dashed cyan;
-  box-shadow: 0 0 20px cyan;
-  outline-offset: 1px;
-  border-radius: 3px;
+.top, .selected {
+  color: white;
 }
 
 .target {
-  outline: 2px dashed red;
-  box-shadow: 0 0 20px red;
+  border: 4px dashed white;
   outline-offset: 1px;
   border-radius: 3px;
   cursor: pointer;
+}
+
+.requested {
+  outline: 4px dashed white;
 }
 
 .footer button {
   background-color: transparent;
-  color: white;
+
   border: 0;
   font-size: 1.5rem;
   padding-top: 1px;
   margin: 0 8px 0 8px;
   cursor: pointer;
   text-shadow: 5px 5px 100px black;
-}
-
-.footer button:hover,
-.wood:hover,
-.metal:hover {
-  background-color: #444444;
-}
-
-@keyframes expandFade {
-  0% {
-    font-size: 1em;
-    opacity: 1;
-  }
-
-  50% {
-    font-size: 2em;
-    opacity: 1;
-  }
-
-  100% {
-    font-size: 2em;
-    opacity: 0;
-  }
-}
-
-.caption {
-  pointer-events: none;
-  opacity: 0;
-  position: absolute;
-  top: 50%;
-  left: auto;
-  font-size: 3.0rem;
-  animation: expandFade 2s ease-in-out forwards;
-  display: none;
 }

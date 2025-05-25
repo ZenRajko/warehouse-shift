@@ -1,0 +1,25 @@
+.content {
+    background-color: white;
+    background-image: url('/themes/paper.svg');
+    font-family: 'Schoolbell', cursive;
+    font-weight: bold;
+    color: black;
+}
+
+.themes button {
+    font-family: 'Schoolbell', cursive;
+    background-color: transparent;
+    color: grey;
+}
+
+.themes button:hover {
+    color: black;
+}
+
+button.theme-selected {
+    color: black;
+}
+
+.title {
+    font-family: 'Cabin Sketch', cursive;
+}
