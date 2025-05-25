@@ -1,6 +1,5 @@
 {
   "name": "warehouse-shift",
-  "homepage": "https://zenrajko.github.io/warehouse-shift",
   "description": "A stacking game in the style of chalk drawings.",
   "version": "0.1.0",
   "private": true,
@@ -28,8 +27,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "set-homepage": "node set-homepage.js",
+    "predeploy": "npm run set-homepage && npm run build",
+    "deploy": "gh-pages -d build",
+    "remove-homepage": "node remove-homepage.js",
+    "postdeploy": "npm run remove-homepage"
   },
   "eslintConfig": {
     "extends": [

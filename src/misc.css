@@ -1,0 +1,116 @@
+@keyframes fade-out {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+  .fade-out {
+    opacity: 1;
+    animation: fade-out 0.5s ease-in forwards;
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0;}
+    to { opacity: 1;}
+  }
+
+  .fade-in {
+    opacity: 0;
+    animation: fade-in 0.5s ease-in forwards;
+  }
+
+@keyframes pulsate {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+  @keyframes spin-out {
+    from {
+      transform: rotate(0deg) scale(1);
+    }
+    to {
+      transform: rotate(360deg) scale(0);
+    }
+  }
+
+  .spin-out {
+    animation: spin-out 0.25s ease-in forwards;
+  }
+
+
+  .theme-toon, .theme-toon button {
+    text-shadow: 3px 3px 0px black, 6px 6px 0 black;
+  }
+
+  .theme-toon .title {
+    color: #FFFF99;
+  }
+
+  .theme-toon .tap-me {
+    color: #99FF99;
+  }
+
+  .theme-chalk .board {
+    background-color: transparent;
+    border-radius: 5px;
+    border: 5px solid grey;
+  }
+
+  .theme-paper .board {
+    background-color: transparent;
+    border-radius: 5px;
+    border: 5px solid #00000099;
+  }
+
+  .theme-neon .wood {
+    background: linear-gradient(to bottom, #9B5F32, #4B1F00);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .theme-neon .metal {
+    background: linear-gradient(to bottom, #D0D0D0, #38393D);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .theme-chalk .requested {
+    color: yellow;
+  }
+
+  .theme-neon .requested {
+    background: linear-gradient(to bottom right, darkorange, yellow, darkorange);
+    -webkit-background-clip: text;
+    background-clip: text;
+    box-shadow: 0 0 20px darkorange;
+    outline-offset: 1px;
+  }
+
+  .theme-chalk .top {
+    color: white;
+  }
+
+  .theme-paper .top {
+    outline: 3px dashed black;
+  }
+
+  .theme-neon .top {
+    outline: 2px dashed cyan;
+    box-shadow: 0 0 10px cyan;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+
+  .theme-chalk .selected, .theme-paper .selected {
+    outline: 5px dashed white;
+    outline-offset: 2px;
+  }
+
+  .theme-neon .selected {
+    animation: pulsate 1.25s infinite alternate ease-in-out;
+    outline: 2px dashed cyan;
+    box-shadow: 0 0 20px cyan;
+    outline-offset: 1px;
+    border-radius: 3px;
+  }
+

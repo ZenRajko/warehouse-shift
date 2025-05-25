@@ -1,0 +1,67 @@
+.content {
+    font-family: 'Tilt Neon', sans-serif;
+}
+
+.themes button {
+    font-family: 'Tilt Neon', sans-serif;
+}
+
+@keyframes flicker {
+    0% { opacity: 1; }
+    50% { opacity: 0.8; }
+    100% { opacity: 1; }
+}
+
+.title, .title-win, .title-lose {
+    animation: flicker 0.8s infinite alternate;
+}
+
+.title {
+    color: #ff99ff;
+    text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+}
+
+.title-win {
+    color: #99ff99;
+    text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 20px #00ff00;
+}
+
+.title-lose {
+    color: red;
+    text-shadow: 0 0 5px red, 0 0 10px red, 0 0 20px red;
+}
+
+.by, .name, .instructions-title, .or-lose {
+    color: #99ff99;
+    text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 20px #00ff00;
+}
+
+.date, .instructions, .instructions-lose {
+    color: #ffff99;
+    text-shadow: 0 0 5px #ffff00, 0 0 10px #ffff00, 0 0 20px #ffff00;
+}
+
+.tap-me {
+    color: #5555ff;
+    text-shadow: 0 0 5px #0000ff, 0 0 10px #0000ff, 0 0 20px #0000ff;
+}
+
+.theme-title {
+    color: #ffffff;
+    text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
+}
+
+.themes button {
+    color: #555555;
+}
+
+button.theme-selected {
+    color: white;
+    text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
+    animation: flicker 0.4s infinite alternate;
+}
+
+.themes button:hover {
+    text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
+}
+
