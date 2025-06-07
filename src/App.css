@@ -11,6 +11,10 @@
   overflow: hidden;
 }
 
+.background {
+  display: none;
+}
+
 .pointer {
   cursor: pointer;
 }
@@ -69,7 +73,14 @@ button.theme-selected {
   margin-bottom: 20px;
 }
 
-.by, .date, .or-win, .or-lose {
+.title-overlay {
+  display: none;
+}
+
+.by,
+.date,
+.or-win,
+.or-lose {
   font-size: 1.25rem;
   margin-bottom: 5px;
 }
@@ -83,20 +94,24 @@ button.theme-selected {
   margin-bottom: 30px;
 }
 
-.instructions-win, .instructions-lose {
+.instructions-win,
+.instructions-lose {
   font-size: 1.5rem;
   margin-bottom: 30px;
 }
 
-.or-win, .or-lose {
+.or-win,
+.or-lose {
   margin-bottom: 30px;
 }
 
-.instructions-metal, .instructions-wood {
+.instructions-metal,
+.instructions-wood {
   font-size: 1.2rem;
 }
 
-.name, .instructions-title {
+.name,
+.instructions-title {
   font-size: 1.5rem;
   margin-bottom: 20px;
 }
@@ -136,6 +151,7 @@ button.theme-selected {
   gap: 3px;
   margin-bottom: 40px;
   outline: 4px solid grey;
+  cursor: not-allowed;
 }
 
 .cell {
@@ -146,6 +162,7 @@ button.theme-selected {
   border: 0;
   padding: 0;
   margin: 0;
+  cursor: not-allowed;
 }
 
 .cell span {
@@ -154,13 +171,15 @@ button.theme-selected {
   margin: -5px 0 0 -5px;
 }
 
-.wood, .metal {
+.wood,
+.metal {
   color: grey;
-  cursor: pointer;
 }
 
-.top, .selected {
+.top,
+.selected {
   color: white;
+  cursor: pointer;
 }
 
 .target {
@@ -176,7 +195,6 @@ button.theme-selected {
 
 .footer button {
   background-color: transparent;
-
   border: 0;
   font-size: 1.5rem;
   padding-top: 1px;

@@ -1,49 +1,102 @@
-/* Green screen interlaced background */
 .content {
-    font-family: 'VT323', monospace;
-    font-weight: bold;
-    letter-spacing: 0.15em;
-    color: #00ff00;
-    background: repeating-linear-gradient(
-        to bottom,
-        #000 0px,
-        #000 2px,
-        #004400 3px,
-        #004400 5px
-    );
-    text-shadow: 0 0 15px #00ff00;
+  font-family: "VT323", monospace;
+  font-weight: bold;
+  letter-spacing: 0.15em;
+  color: #00ff00;
+  background: repeating-linear-gradient(
+    to bottom,
+    #000 0px,
+    #000 2px,
+    #004400 3px,
+    #004400 5px
+  );
+  text-shadow: 0 0 15px #00ff00;
 }
 
 .content::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    border-radius: inherit;
-    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 60%, rgba(0,0,0,1) 100%);
-    z-index: 2;
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0) 60%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  z-index: 2;
 }
 
-/* Optional: style for theme buttons */
 .themes button {
-    font-family: 'VT323', monospace;
-    font-size: 1.5rem;
-    letter-spacing: 0.09em;
-    background-color: transparent;
-    color: #007700;
+  font-family: "VT323", monospace;
+  font-size: 1.5rem;
+  letter-spacing: 0.09em;
+  background-color: transparent;
+  color: #007700;
 }
 
 button.theme-selected {
-    background-color: black;
-    color: #00ff00;
-    text-shadow: 0 0 2px #00ff00, 0 0 5px #00ff00;
+  background-color: black;
+  color: #00ff00;
+  text-shadow: 0 0 2px #00ff00, 0 0 5px #00ff00;
 }
 
 .themes button:hover {
-    color: #00ff00;
-    text-shadow: 0 0 2px #00ff00, 0 0 5px #00ff00;
+  color: #00ff00;
+  text-shadow: 0 0 2px #00ff00, 0 0 5px #00ff00;
 }
 
 .title {
-    font-size: 4.5rem;
+  font-size: 4.5rem;
+}
+
+.game-page .title {
+  font-size: 3rem;
+  letter-spacing: 0.01em;
+}
+
+.game-page .count {
+  font-size: 2rem;
+}
+
+.board {
+  outline: 0;
+}
+
+.wood,
+.metal {
+  color: #007700;
+}
+
+.top {
+  color: #00ff00;
+  text-shadow: 0 0 2px #00ff00, 0 0 5px #00ff00;
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 1;
+  }
+  49% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.requested {
+  outline: 0;
+  animation: flicker 0.8s infinite alternate;
+}
+
+.target {
+  border: 3px dashed #00ff00;
+}
+
+.footer button {
+  color: #007700;
 }

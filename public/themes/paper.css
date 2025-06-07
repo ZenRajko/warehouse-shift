@@ -1,25 +1,75 @@
 .content {
-    background-color: white;
-    background-image: url('/themes/paper.svg');
-    font-family: 'Schoolbell', cursive;
-    font-weight: bold;
-    color: black;
+  background-color: transparent;
+  font-family: "Schoolbell", cursive;
+  font-weight: bold;
+  color: black;
+}
+
+.background {
+  display: block;
+  background-image: url("/themes/paper.svg");
+  background-color: white;
+  width: 100%;
+  height: 200%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
 }
 
 .themes button {
-    font-family: 'Schoolbell', cursive;
-    background-color: transparent;
-    color: grey;
+  font-family: "Schoolbell", cursive;
+  background-color: transparent;
+  color: grey;
 }
 
 .themes button:hover {
-    color: black;
+  color: black;
 }
 
 button.theme-selected {
-    color: black;
+  color: black;
 }
 
 .title {
-    font-family: 'Cabin Sketch', cursive;
+  font-family: "Cabin Sketch", cursive;
+}
+
+.board {
+  outline: 0;
+  background-color: transparent;
+  border-width: 8px;
+  border-style: solid;
+  border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="12" viewBox="0 0 60 12"><path d="M0,6 Q7.5,0 15,6 T30,6 T45,6 T60,6" fill="none" stroke="black" stroke-width="2"/></svg>')
+    12 12 12 12 stretch;
+}
+
+.metal,
+.wood {
+  color: #00000088;
+}
+
+.requested {
+  outline: none;
+  border-width: 8px;
+  border-style: solid;
+  border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><path d="M0,20 Q10,0 20,20 T40,20 M20,0 Q40,10 20,20 Q0,30 20,40" fill="none" stroke="black" stroke-width="4"/></svg>')
+    40 repeat;
+}
+
+.top {
+  color: black;
+}
+
+.target {
+  outline: 0;
+  background-color: transparent;
+  border-width: 8px;
+  border-style: solid;
+  border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="12" viewBox="0 0 60 12"><path d="M0,6 Q7.5,0 15,6 T30,6 T45,6 T60,6" fill="none" stroke="black" stroke-width="2"/></svg>')
+    12 12 12 12 stretch;
+}
+
+.footer button {
+  color: #00000088;
 }

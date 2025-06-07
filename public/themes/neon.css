@@ -1,67 +1,156 @@
 .content {
-    font-family: 'Tilt Neon', sans-serif;
+  font-family: "Tilt Neon", sans-serif;
 }
 
 .themes button {
-    font-family: 'Tilt Neon', sans-serif;
+  font-family: "Tilt Neon", sans-serif;
 }
 
 @keyframes flicker {
-    0% { opacity: 1; }
-    50% { opacity: 0.8; }
-    100% { opacity: 1; }
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
-.title, .title-win, .title-lose {
-    animation: flicker 0.8s infinite alternate;
+.title,
+.title-win,
+.title-lose {
+  animation: flicker 0.8s infinite alternate;
 }
 
 .title {
-    color: #ff99ff;
-    text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+  color: #ff99ff;
+  text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px #ff00ff;
 }
 
 .title-win {
-    color: #99ff99;
-    text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 20px #00ff00;
+  color: #99ff99;
+  text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 20px #00ff00;
 }
 
 .title-lose {
-    color: red;
-    text-shadow: 0 0 5px red, 0 0 10px red, 0 0 20px red;
+  color: red;
+  text-shadow: 0 0 5px red, 0 0 10px red, 0 0 20px red;
 }
 
-.by, .name, .instructions-title, .or-lose {
-    color: #99ff99;
-    text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 20px #00ff00;
+.by,
+.name,
+.instructions-title {
+  color: #99ff99;
+  text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 20px #00ff00;
 }
 
-.date, .instructions, .instructions-lose {
-    color: #ffff99;
-    text-shadow: 0 0 5px #ffff00, 0 0 10px #ffff00, 0 0 20px #ffff00;
+.date,
+.instructions-golden,
+.instructions-win,
+.or-lose {
+  color: #ffff99;
+  text-shadow: 0 0 5px #ffff00, 0 0 10px #ffff00, 0 0 20px #ffff00;
+}
+
+span.instructions-golden {
+  margin: 0;
+  padding: 0;
+  font-size: 1.75rem;
+}
+
+.instructions-metal {
+  color: #ddddff;
+  text-shadow: 0 0 5px #aa88ff, 0 0 10px #aa88ff, 0 0 20px #aa88ff;
+}
+
+.instructions-wood {
+  color: #ffcc99;
+  text-shadow: 0 0 5px #ff9900, 0 0 10px #ff9900, 0 0 20px #ff9900;
 }
 
 .tap-me {
-    color: #5555ff;
-    text-shadow: 0 0 5px #0000ff, 0 0 10px #0000ff, 0 0 20px #0000ff;
+  color: #5555ff;
+  text-shadow: 0 0 5px #0000ff, 0 0 10px #0000ff, 0 0 20px #0000ff;
 }
 
-.theme-title {
-    color: #ffffff;
-    text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
+.theme-title,
+.instructions,
+.instructions-lose,
+.or-win {
+  color: #ffffff;
+  text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
 }
 
 .themes button {
-    color: #555555;
+  color: #555555;
 }
 
 button.theme-selected {
-    color: white;
-    text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
-    animation: flicker 0.4s infinite alternate;
+  color: white;
+  text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
+  animation: flicker 0.4s infinite alternate;
 }
 
 .themes button:hover {
-    text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
+  text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
 }
 
+.cell {
+  color: transparent;
+}
+
+.wood {
+  background: linear-gradient(to bottom, #9b5f32, #4b1f00);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.metal {
+  background: linear-gradient(to bottom, #d0d0d0, #38393d);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.requested {
+  background: linear-gradient(to bottom right, darkorange, yellow, darkorange);
+  -webkit-background-clip: text;
+  background-clip: text;
+  box-shadow: 0 0 20px darkorange;
+  text-shadow: 0;
+  outline: 0;
+}
+
+.top {
+  outline: 2px dashed cyan;
+  box-shadow: 0 0 20px cyan;
+  border-radius: 2px;
+  cursor: pointer;
+  background: linear-gradient(to bottom, white, blue);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.target {
+  border: 2px dashed red;
+  box-shadow: 0 0 20px red;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.selected {
+  animation: pulsate 1.25s infinite alternate ease-in-out;
+  outline: 1px dashed cyan;
+  box-shadow: 0 0 20px cyan;
+  border-radius: 3px;
+}
+
+.game-page .count {
+  color: #ddddff;
+  text-shadow: 0 0 5px #aa88ff, 0 0 10px #aa88ff, 0 0 20px #aa88ff;
+}
+
+.social-icon {
+  filter: drop-shadow(-1px -1px 6px #ddddff);
+}

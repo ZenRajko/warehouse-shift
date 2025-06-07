@@ -28,6 +28,11 @@ const App: React.FC = () => {
   const [theme, setTheme] = useState<string | undefined>();
 
   useEffect(() => {
+    //restartGame();
+    //setPage(Page.Game);
+  }, []);
+
+  useEffect(() => {
     if (config?.themes && config.theme && !theme) {
       setTheme(config.theme);
     }
@@ -129,7 +134,7 @@ const App: React.FC = () => {
     initialBoard.fill(null);
     let i = end;
     let crates = 0;
-    for (let y = 0; y < 1; y++) {
+    for (let y = 0; y < 7; y++) {
       for (let x = 0; x < width; x++) {
         let tile = null;
         if (y === 0)
@@ -174,7 +179,7 @@ const App: React.FC = () => {
         if (page === Page.Title) {
           restartGame();
           setPage(Page.Intro);
-        } else if (page === Page.Intro) {
+        } else if (page === Page.Intro || page === Page.Info) {
           setPage(Page.Game);
         } else if (page === Page.Win || page === Page.Lose) {
           restartGame();
@@ -183,8 +188,11 @@ const App: React.FC = () => {
       }}
     >
 
+      <div className="background"></div>
+
       {page === Page.Title && (<div className="title-page fade-in">
         <div className="title">Warehouse<br></br>SHIFT</div>
+        <div className="title-overlay">Warehouse<br></br>SHIFT</div>
         <div className="by">by</div>
         <div className="name">Damian Rajkowski</div>
         <div className="date">19 May 2025</div>
@@ -200,9 +208,9 @@ const App: React.FC = () => {
           <div className="instructions">
             <p>
               You work in a warehouse.<br></br>
-              Customers want their golden crates!<br></br>
+              Customers want their &nbsp;<p className="requested">crates</p>&nbsp;!<br></br>
               Move top crates from stack to stack<br></br>
-              to reach the crate and click it!
+              to reach customer crate!
             </p>
             <div className="instructions-metal">
               <span className="material-icons">{Icon.Metal}</span>
@@ -272,15 +280,15 @@ const App: React.FC = () => {
 
         <div className="footer">
           <button title="Restart" onClick={() => restartGame()}>
-            <FontAwesomeIcon icon={faRotate} /></button>
+            <FontAwesomeIcon icon={faRotate} className="social-icon" /></button>
           <button title="GitHub Page" onClick={() => {
             window.open("https://github.com/ZenRajko/warehouse-shift", "_blank");
           }
-          }><FontAwesomeIcon icon={faGithub} /></button>
+          }><FontAwesomeIcon icon={faGithub} className="social-icon" /></button>
           <button title="Info" onClick={() => {
             setPage(Page.Info);
           }
-          }><FontAwesomeIcon icon={faInfoCircle} /></button>
+          }><FontAwesomeIcon icon={faInfoCircle} className="social-icon" /></button>
         </div>
       </div>)}
 

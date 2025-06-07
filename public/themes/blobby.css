@@ -1,9 +1,9 @@
 .content {
-    font-family: 'Coiny', cursive;
+  font-family: "Coiny", cursive;
 }
 
 .themes button {
-    font-family: 'Coiny', cursive;
+  font-family: "Coiny", cursive;
 }
 
 .themes button:hover {
@@ -13,4 +13,26 @@ button.theme-selected {
 }
 
 .title {
+  color: darkgreen;
+}
+
+.title-overlay {
+  color: lightgreen;
+  display: block;
+}
+
+.title-2 {
+  font-family: "Coiny", cursive;
+  font-weight: bold;
+  color: #39e639; /* bright green */
+  /* Layered green/yellow text-shadows for a slime effect */
+  text-shadow: 0 2px 4px #1a6600, 0 4px 8px #39e639, 0 0 10px #bfff00,
+    0 0 20px #39e639, 2px 2px 0 #fff;
+  filter: blur(0.5px) drop-shadow(0 4px 6px #39e639aa);
+  letter-spacing: 0.04em;
+}
+
+.game-page .title {
+  font-size: 2rem;
+  letter-spacing: 0.01em;
 }
