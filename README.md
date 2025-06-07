@@ -13,7 +13,25 @@ Also, there are two types of crates:
 
 This game is built in React with Typescript. All graphics are comprised of Google fonts and glyphs. It's designed for typical mobile phone form factor. 
 
-### Screenshots
+### Latest Screenshots
+
+Working on an update to implement themes. Some examples below: glowing Neon, nods to the old green-screen and Hercules monitors of my youth, and a paper theme similar to what I'd envisioned originally for this game.
+
+<p>
+  <a href='https://zenrajko.github.io/tic-tac-toe/' target="_blank"><img src="https://github.com/user-attachments/assets/69873fd7-16b3-45f1-9ea4-e0f1e0eb73f4" width="200" height="400" /></a>
+  &nbsp;&nbsp;
+  <a href='https://zenrajko.github.io/tic-tac-toe/' target="_blank"><img src="https://github.com/user-attachments/assets/2673c9b7-d84b-489c-bca6-df7bb79e5070" width="200" height="400" /></a>
+  &nbsp;&nbsp;
+  <a href='https://zenrajko.github.io/tic-tac-toe/' target="_blank"><img src="https://github.com/user-attachments/assets/a024138a-409c-41f9-af5a-665746e06feb" width="200" height="400" /></a>
+  &nbsp;&nbsp;
+  <a href='https://zenrajko.github.io/tic-tac-toe/' target="_blank"><img src="https://github.com/user-attachments/assets/cc960edf-4215-4e9c-b391-b1995de5f051" width="200" height="400" /></a>
+  &nbsp;&nbsp;
+  <a href='https://zenrajko.github.io/tic-tac-toe/' target="_blank"><img src="https://github.com/user-attachments/assets/7c3a9be8-e339-450c-833e-e7303ce4a589" width="200" height="400" /></a>
+  &nbsp;&nbsp;
+  <a href='https://zenrajko.github.io/tic-tac-toe/' target="_blank"><img src="https://github.com/user-attachments/assets/ea53faad-b34e-4ac5-b258-c360a56e1f16" width="200" height="400" /></a>
+</p>
+
+### Screenshots pre June 7, 2025
 
 The first screenshot below shows a typical level. The <font color="gold">golden</font> crate is the one you have to reach. 
 The top crate on each stack is highlighted with the <font color="cyan">cyan</font> border, indicating that these are the crates that can be moved.
