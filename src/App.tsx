@@ -195,7 +195,7 @@ const App: React.FC = () => {
         <div className="title">Warehouse<br></br>Shift</div>
         <div className="title-overlay">Warehouse<br></br>Shift</div>
         <div className="by">by</div>
-        <div className="name">Damian Rajkowski</div>
+        <div className="name">Zenrajko</div>
         <div className="date">19 May 2025</div>
         <div className="tap-me">Tap anywhere<br></br>to start</div>
         <div className="theme-title">Or, choose a theme first:</div>
@@ -205,6 +205,7 @@ const App: React.FC = () => {
       {(page === Page.Intro || page === Page.Info) &&
         (<div className="title-page fade-in">
           <div className="title">Warehouse<br></br>Shift</div>
+          <div className="name">by Zenrajko</div>
           <div className="instructions-title">Instructions</div>
           <div className="instructions">
             <p>
@@ -283,7 +284,7 @@ const App: React.FC = () => {
           <button title="Restart" onClick={() => restartGame()}>
             <FontAwesomeIcon icon={faRotate} className="social-icon" /></button>
           <button title="GitHub Page" onClick={() => {
-            window.open("https://github.com/ZenRajko/warehouse-shift", "_blank");
+            window.open("https://github.com/Zenrajko/warehouse-shift", "_blank");
           }
           }><FontAwesomeIcon icon={faGithub} className="social-icon" /></button>
           <button title="Info" onClick={() => {
