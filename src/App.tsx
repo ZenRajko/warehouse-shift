@@ -191,8 +191,8 @@ const App: React.FC = () => {
       <div className="background"></div>
 
       {page === Page.Title && (<div className="title-page fade-in">
-        <div className="title">Warehouse<br></br>SHIFT</div>
-        <div className="title-overlay">Warehouse<br></br>SHIFT</div>
+        <div className="title">Warehouse<br></br>Shift</div>
+        <div className="title-overlay">Warehouse<br></br>Shift</div>
         <div className="by">by</div>
         <div className="name">Damian Rajkowski</div>
         <div className="date">19 May 2025</div>
@@ -203,7 +203,7 @@ const App: React.FC = () => {
 
       {(page === Page.Intro || page === Page.Info) &&
         (<div className="title-page fade-in">
-          <div className="title">Warehouse<br></br>SHIFT</div>
+          <div className="title">Warehouse<br></br>Shift</div>
           <div className="instructions-title">Instructions</div>
           <div className="instructions">
             <p>
