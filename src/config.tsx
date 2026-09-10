@@ -11,7 +11,9 @@ export const ConfigProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     const [config, setConfig] = useState<Config | null>(null);
 
     useEffect(() => {
-        fetch("/config.json")
+        // Use PUBLIC_URL environment variable for correct path on GitHub Pages
+        const publicUrl = process.env.PUBLIC_URL || "";
+        fetch(`${publicUrl}/config.json`)
             .then(response => response.json())
             .then(data => setConfig(data))
             .catch(error => console.error("Error loading config:", error));
