@@ -22,7 +22,7 @@ const Themes: React.FC<ThemesProps> = ({ onThemeChange }) => {
 
   return (
     <div className="themes">
-      {config?.themes && Object.values(config.themes).map(t => (
+      {config?.themes && config.themes.map(t => (
         <button key={t}
           onClick={(e) => { e.stopPropagation(); buttonClicked(t); }}
           className={theme === t ? "theme-selected" : ""}>
