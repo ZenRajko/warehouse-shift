@@ -1,5 +1,6 @@
 {
   "name": "warehouse-shift",
+  "homepage": "https://ZenRajko.github.io/warehouse-shift/",
   "description": "A stacking game in the style of chalk drawings.",
   "version": "0.1.0",
   "private": true,
@@ -54,6 +55,6 @@
   "devDependencies": {
     "@types/seedrandom": "^3.0.8",
     "cross-env": "^7.0.3",
-    "gh-pages": "^6.3.0"
+    "gh-pages": "^6.3.7"
   }
 }
