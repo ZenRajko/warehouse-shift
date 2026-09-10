@@ -45,7 +45,8 @@ const App: React.FC = () => {
       const link = document.createElement("link");
       link.id = "theme-style";
       link.rel = "stylesheet";
-      link.href = `/themes/${theme.toLowerCase()}.css`;
+      const publicUrl = process.env.PUBLIC_URL || "";
+      link.href = `${publicUrl}/themes/${theme.toLowerCase()}.css`;
       document.head.appendChild(link);
     }
   }, [theme]);
